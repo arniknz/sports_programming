@@ -4,18 +4,6 @@
 
 using namespace std;
 
-int mx_el(vector<int> &a) {
-    auto m = 0;
-    for (int i = 0; i < a.size(); i++) {
-        if (a[i] >= m) {
-            m = a[i];
-        }
-    }
-
-    return m;
-}
-
-
 int main() {
     int n;
     cin >> n;
