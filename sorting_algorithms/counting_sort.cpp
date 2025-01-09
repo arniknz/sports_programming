@@ -13,16 +13,6 @@ int main() {
         cin >> x;
     }
 
-    for (auto x: a) {
-        cout << x << " ";
-    }
-    cout << endl;
-
-    //int mn = *min_element(a.begin(), a.end());
-    //for (auto &m: a) {
-    //    m -= mn;
-    //}
-
     int mx = *max_element(a.begin(), a.end());
     vector<int> cnt(mx + 1, 0);
 
@@ -31,9 +21,8 @@ int main() {
     }
 
     auto b = 0;
-    for (int i = 0; i < n; i++) {
-        int c = cnt[i];
-        for (int j = 0; j < c; j++) {
+    for (size_t i = 0; i < mx + 1; i++) {
+        for (int j = 0; j < cnt[i]; j++) {
             a[b++] = i;
         }
     }
