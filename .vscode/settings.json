@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "compare": "cpp",
+        "concepts": "cpp",
+        "functional": "cpp",
+        "random": "cpp",
+        "flat_map": "cpp",
+        "numeric": "cpp",
+        "ranges": "cpp"
+    }
+}
