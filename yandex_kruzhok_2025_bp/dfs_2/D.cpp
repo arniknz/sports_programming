@@ -6,7 +6,9 @@ const int MAXN = 1e6;
 bool used[MAXN] = {false};
 int h[MAXN], d[MAXN];
 map<int, vector<pair<int, int>>> g;
+map<int, pair<int, int>> dg;
 vector<int> ans;
+bool ok = true;
 
 void dfs(int v, int p = -1, int id = -1) {
     used[v] = true;
@@ -14,8 +16,12 @@ void dfs(int v, int p = -1, int id = -1) {
     for (auto &[u, i] : g[v]) {
         if (i == id) {continue;}
         if (used[u]) {
+            if (h[v] > h[u]) {
+                dg[i] = {v, u};
+            }
             d[v] = min(d[v], h[u]);
         } else {
+            dg[i] = {v, u};
             dfs(u, v, i);
             d[v] = min(d[v], d[u]);
             if (h[v] < d[u]) {
@@ -36,10 +42,13 @@ int main() {
             dfs(i);
         }
     }
-    sort(ans.begin(), ans.end());
-    cout << ans.size() << endl;
-    for (auto x : ans) {
-        cout << x << endl;
+    //cout << endl;
+    if (ans.empty()) {
+        for (auto i = 1; i <= m; i++) {
+            cout << dg[i].first << " " << dg[i].second << endl;
+        }
+    } else {
+        cout << 0 << endl;
     }
     return 0;
 }
